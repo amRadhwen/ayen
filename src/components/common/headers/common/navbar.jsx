@@ -70,19 +70,22 @@ class NavBar extends Component {
                 <div className="main-navbar">
                     <div id="mainnav" >
                         <div className="toggle-nav" onClick={this.openNav.bind(this)} >
-                            <i className="fa fa-bars sidebar-bar"></i>
+                            <i className="fa fa-bars sidebar-bar"/>
                         </div>
                         <ul className="nav-menu" style={this.state.navClose}>
                             <li className="back-btn" onClick={this.closeNav.bind(this)} >
                                 <div className="mobile-back text-right">
                                     <span >Back</span>
-                                    <i className="fa fa-angle-right pl-2" aria-hidden="true"></i>
+                                    <i className="fa fa-angle-right pl-2" aria-hidden="true"/>
                                 </div>
                             </li>
                             <li >
-                                <Link to="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>
+                                <Link
+                                    to="#"
+                                    className="nav-link"
+                                    onClick={(e) => this.handleSubmenu(e)}>
                                     {translate('home')}
-                                    <span className="sub-arrow"></span>
+                                    <span className="sub-arrow"/>
                                 </Link>
                                 <ul className="nav-submenu" >
                                     <li><Link to={`${process.env.PUBLIC_URL}/fashion`} >{translate('fashion')}</Link></li>
@@ -98,7 +101,7 @@ class NavBar extends Component {
                             <li >
                                 <Link to="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>
                                     {translate('shop')}
-                                    <span className="sub-arrow"></span>
+                                    <span className="sub-arrow" />
                                 </Link>
                                 <ul className="nav-submenu">
                                     <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >{translate('category_left_sidebar')}</Link></li>
@@ -111,7 +114,7 @@ class NavBar extends Component {
                             <li >
                                 <Link to="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>
                                     {translate('products')}
-                                    <span className="sub-arrow"></span>
+                                    <span className="sub-arrow"/>
                                 </Link>
                                 <ul className="nav-submenu">
                                     <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`} >{translate('left_sidebar')}</Link></li>
@@ -127,7 +130,7 @@ class NavBar extends Component {
                             <li className="mega-menu">
                                 <Link to="#" className="dropdown" onClick={(e) => this.handleSubmenu(e)}>
                                     {translate('features')}
-                                    <span className="sub-arrow"></span>
+                                    <span className="sub-arrow"/>
                                 </Link>
                                 <div className="mega-menu-container" >
                                     <div className="container">
@@ -137,7 +140,7 @@ class NavBar extends Component {
                                                     <div className="menu-title" >
                                                         <h5 onClick={(e) => this.handleMegaSubmenu(e)}>
                                                             {translate('portfolio')}
-                                                            <span className="sub-arrow"></span>
+                                                            <span className="sub-arrow"/>
                                                         </h5>
                                                     </div>
                                                     <div className="menu-content">
@@ -158,7 +161,7 @@ class NavBar extends Component {
                                                     <div className="menu-title" >
                                                         <h5 onClick={(e) => this.handleMegaSubmenu(e)}>
                                                             {translate('theme_elements')}
-                                                            <span className="sub-arrow"></span>
+                                                            <span className="sub-arrow"/>
                                                         </h5>
                                                     </div>
                                                     <div className="menu-content">
@@ -178,7 +181,7 @@ class NavBar extends Component {
                                                     <div className="menu-title" >
                                                         <h5 onClick={(e) => this.handleMegaSubmenu(e)}>
                                                             {translate('product_elements')}
-                                                            <span className="sub-arrow"></span>
+                                                            <span className="sub-arrow"/>
                                                         </h5>
                                                     </div>
                                                     <div className="menu-content" >
@@ -197,7 +200,7 @@ class NavBar extends Component {
                                                     <div className="menu-title" >
                                                         <h5 onClick={(e) => this.handleMegaSubmenu(e)}>
                                                             {translate('email_template')}
-                                                            <span className="sub-arrow"></span>
+                                                            <span className="sub-arrow"/>
                                                         </h5>
                                                     </div>
                                                     <div className="menu-content" >
@@ -215,7 +218,7 @@ class NavBar extends Component {
                                                     <div className="menu-title">
                                                         <h5 onClick={(e) => this.handleMegaSubmenu(e)}>
                                                             {translate('accessories')}
-                                                            <span className="sub-arrow"></span>
+                                                            <span className="sub-arrow"/>
                                                         </h5>
                                                     </div>
                                                     <div className="menu-content" >
@@ -257,7 +260,7 @@ class NavBar extends Component {
                             <li>
                                 <Link to="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>
                                     {translate('pages')}
-                                    <span className="sub-arrow"></span>
+                                    <span className="sub-arrow"/>
                                 </Link>
                                 <ul className="nav-submenu">
                                     <li><Link to={`${process.env.PUBLIC_URL}/pages/about-us`} >{translate('about_us')}</Link></li>
@@ -276,7 +279,7 @@ class NavBar extends Component {
                             <li >
                                 <Link to="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>
                                     {translate('blog')}
-                                    <span className="sub-arrow"></span>
+                                    <span className="sub-arrow"/>
                                 </Link>
                                 <ul className="nav-submenu">
                                     <li><Link to={`${process.env.PUBLIC_URL}/blog/blog-page`} >{translate('blog_left_sidebar')}</Link></li>

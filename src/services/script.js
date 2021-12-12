@@ -1,5 +1,3 @@
-
-
 export const Product4 = {
     infinite: true,
     speed: 300,

@@ -1,34 +1,25 @@
-import React, {Component} from 'react';
-import { withTranslate } from 'react-redux-multilingual'
+import React from 'react';
+import {withTranslate} from 'react-redux-multilingual'
 
 // Custom Components
-import HeaderOne from './common/headers/header-one';
-import HeaderTwo from './common/headers/header-two';
-import HeaderThree from './common/headers/header-three';
-
+import HeaderOne from "./common/headers/header-one";
 import FooterOne from "./common/footers/footer-one";
-import FooterTwo from "./common/footers/footer-two";
-import FooterThree from "./common/footers/footer-three";
+
 
 // ThemeSettings
-import ThemeSettings from "./common/theme-settings"
 
 
+function App(props) {
+    return (
+        <div>
+            <HeaderOne logoName={'logo.png'}/>
+            {props.children}
+            <FooterOne logoName={'logo.png'}/>
 
-class App extends Component {
+            {/*<ThemeSettings />*/}
 
-    render() {
-        return (
-            <div>
-                <HeaderOne logoName={'logo.png'}/>
-                {this.props.children}
-                <FooterOne logoName={'logo.png'}/>
-
-                <ThemeSettings />
-
-            </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default withTranslate(App);

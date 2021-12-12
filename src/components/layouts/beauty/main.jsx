@@ -45,7 +45,7 @@ class Beauty extends Component {
         return (
             <div>
                 <Helmet>
-                    <title>MultiKart | Beauty Store</title>
+                    <title>Ayen | Magasin Artisanal</title>
                 </Helmet>
                 <HeaderOne logoName={'layout3/logo.png'}/>
                 <section className="p-0">
@@ -58,8 +58,9 @@ class Beauty extends Component {
                                             <div className="slider-contain">
                                                 <div>
                                                     <h4>welcome to beauty</h4>
-                                                    <h1>beauty products</h1><a href="#" className="btn btn-solid">shop
-                                                    now</a></div>
+                                                    <h1>beauty products</h1>
+                                                    <a href="#" className="btn btn-solid">shop now</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -74,8 +75,9 @@ class Beauty extends Component {
                                             <div className="slider-contain">
                                                 <div>
                                                     <h4>save 30% off</h4>
-                                                    <h1>beauty products</h1><a href="#" className="btn btn-solid">shop
-                                                    now</a></div>
+                                                    <h1>beauty products</h1>
+                                                    <a href="#" className="btn btn-solid">shop now</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +145,7 @@ class Beauty extends Component {
                                     <div className="video-img">
                                         <img src={`${process.env.PUBLIC_URL}/assets/images/beauty/video_1.jpg`} alt="" className="img-fluid blur-up lazyload" />
                                         <div className="play-btn">
-                                            <span><i className="fa fa-play" aria-hidden="true"></i></span>
+                                            <span><i className="fa fa-play" aria-hidden="true"/></span>
                                         </div>
                                     </div>
                                 </a>
@@ -152,8 +154,7 @@ class Beauty extends Component {
                                     onClose={this.onCloseModal}
                                     id="video"
                                     className="modal fade video-modal" center>
-                                    <iframe src="https://www.youtube.com/embed/FRIDLxM8Roc"
-                                            allowFullScreen></iframe>
+                                    <iframe src="https://www.youtube.com/embed/FRIDLxM8Roc" allowFullScreen/>
                                 </Modal>
                             </div>
                         </div>
@@ -196,7 +197,7 @@ class Beauty extends Component {
 
                 <FooterOne logoName={'layout3/logo.png'}/>
 
-                <ThemeSettings />
+                {/*<ThemeSettings />*/}
             </div>
         )
     }

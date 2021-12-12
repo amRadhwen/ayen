@@ -1,11 +1,11 @@
-var module = {
-    fn: {
-        locale: 'fn',
+const module = {
+    fr: {
+        locale: 'fr_FR',
         messages: {
             topbar_title: 'Bienvenue dans notre magasin {theme_name}',
-            call_us: 'Appelez nous',
-            home: 'maison',
-            features: 'fonctionnalités',
+            call_us: 'Appelez',
+            home: 'acceuil',
+            features: 'foncs',
             new: 'Nouveau',
             blog: 'Blog',
             blog_left_sidebar: 'barre latérale gauche',
@@ -16,7 +16,7 @@ var module = {
             category_no_sidebar: 'sans encadré',
             category_metro: 'métro',
             category_full_width: 'pleine largeur',
-            products: 'des produits',
+            products: 'produits',
             left_sidebar: 'Barre latérale degauche',
             right_sidebar: 'Barre latérale droite',
             no_sidebar: 'pas de barre latérale',
@@ -27,11 +27,11 @@ var module = {
             thumbnail_left: 'vignette à gauche',
             thumbnail_right: 'vignette droite',
             vertical_tab: 'onglet vertical',
-            pages: 'des pages',
+            pages: 'pages',
             about_us: 'à propos de nous',
             lookbook: 'lookbook',
             login: 'sidentifier',
-            register: 'registre',
+            register: "s'enregistrer",
             logout: 'Connectez _ Out',
             search: 'chercher',
             wishlist: 'liste de souhaits',
@@ -104,6 +104,20 @@ var module = {
             portfolio_masonary_3: 'maçonnerie 3',
             portfolio_masonary_4: 'maçonnerie 4',
             portfolio_masonary_full: 'maçonnerie pleine largeur',
+            newsletter_title: "Restez informés",
+            newsletter_desc: "Restez informés de tout en inscrivons à notre Newsletter",
+            subscribe: "S'inscrire",
+            enter_your_email: "Entrer votre email",
+            create_account: "créer un compte",
+            first_name: "nom",
+            last_name: "prénom",
+            email: "email",
+            password: "mot de passe",
+            repeat_password: "repéter mot de passe",
+            tel :"Téléphone",
+            addr: "Adresse",
+            zip: "code postal",
+            birth_date: "date de naissance",
         }
     },
     en: {
@@ -211,9 +225,22 @@ var module = {
             portfolio_masonary_3: 'masonary 3',
             portfolio_masonary_4: 'masonary 4',
             portfolio_masonary_full: 'masonary full width',
+            newsletter_title: "KNOW IT ALL FIRST!",
+            newsletter_desc: "Never Miss Anything From Multikart By Signing Up To Our Newsletter.",
+            subscribe: "subscribe",
+            enter_your_email: "Enter your email",
+            create_account: "create account",
+            first_name: "first name",
+            last_name: "last name",
+            email: "email",
+            password: "password",
+            repeat_password: "repeat password",
+            tel :"Mobile",
+            addr: "Address",
+            zip: "zip code",
+            birth_date: "birth date"
         }
     }
-
 }
 
 export default module;

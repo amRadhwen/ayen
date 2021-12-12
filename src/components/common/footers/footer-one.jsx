@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import {SlideUpDown} from "../../../services/script"
-import LogoImage from "../headers/common/logo"
+import { SlideUpDown } from "../../../services/script";
+import LogoImage from "../headers/common/logo";
+import { withTranslate } from "react-redux-multilingual";
 
 class FooterOne extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount(){
-        var contentwidth = window.innerWidth;
+        let contentwidth = window.innerWidth;
         if ((contentwidth) < 750) {
             SlideUpDown('footer-title');
-        } else {
-            var elems = document.querySelectorAll(".footer-title");
+        }
+        else {
+            let elems = document.querySelectorAll(".footer-title");
             [].forEach.call(elems, function(elemt) {
                 let el = elemt.nextElementSibling;
                 el.style = "display: block";
@@ -21,7 +27,7 @@ class FooterOne extends Component {
 
 
     render () {
-
+        let { translate } = this.props;
         return (
             <footer className="footer-light">
                 <div className="light-layout">
@@ -31,18 +37,20 @@ class FooterOne extends Component {
                                 <div className="col-lg-6">
                                     <div className="subscribe">
                                         <div>
-                                            <h4>KNOW IT ALL FIRST!</h4>
-                                            <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter. </p>
+                                            <h4>{ translate("newsletter_title") }</h4>
+                                            <p>{ translate("newsletter_desc") }</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <form className="form-inline subscribe-form">
                                         <div className="form-group mx-sm-3">
-                                            <input type="text" className="form-control" id="exampleFormControlInput1"
-                                                   placeholder="Enter your email"/>
+                                            <input type="text"
+                                                   className="form-control"
+                                                   id="exampleFormControlInput1"
+                                                   placeholder={translate("enter_your_email")}/>
                                         </div>
-                                        <button type="submit" className="btn btn-solid">subscribe</button>
+                                        <button type="submit" className="btn btn-solid">{translate("subscribe")}</button>
                                     </form>
                                 </div>
                             </div>
@@ -60,24 +68,26 @@ class FooterOne extends Component {
                                     <div className="footer-logo">
                                         <LogoImage logo={this.props.logoName} />
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                                    </p>
                                     <div className="footer-social">
                                         <ul>
                                             <li>
-                                                <Link to={'https://www.facebook.com/'} ><i className="fa fa-facebook" aria-hidden="true"></i></Link>
+                                                <Link to={'https://www.facebook.com/'} ><i className="fa fa-facebook" aria-hidden="true"/></Link>
                                             </li>
                                             <li>
-                                                <Link to={'https://plus.google.com/'} ><i className="fa fa-google-plus" aria-hidden="true"></i></Link>
+                                                <Link to={'https://plus.google.com/'} ><i className="fa fa-google-plus" aria-hidden="true"/></Link>
                                             </li>
                                             <li>
-                                                <Link to={'https://twitter.com'}><i className="fa fa-twitter" aria-hidden="true"></i></Link>
+                                                <Link to={'https://twitter.com'}><i className="fa fa-twitter" aria-hidden="true"/></Link>
                                             </li>
                                             <li>
-                                                <Link to={'https://instagram.com'}><i className="fa fa-instagram" aria-hidden="true"></i></Link>
+                                                <Link to={'https://instagram.com'}><i className="fa fa-instagram" aria-hidden="true"/></Link>
                                             </li>
                                             <li>
-                                                <Link to={'https://rss.com/'}><i className="fa fa-rss" aria-hidden="true"></i></Link>
+                                                <Link to={'https://rss.com/'}><i className="fa fa-rss" aria-hidden="true"/></Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -90,10 +100,10 @@ class FooterOne extends Component {
                                     </div>
                                     <div className="footer-contant">
                                         <ul>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >womens</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >clothing</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >accessories</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >featured</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>womens</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>clothing</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>accessories</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>featured</Link></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -173,4 +183,4 @@ class FooterOne extends Component {
     }
 }
 
-export default FooterOne;
+export default withTranslate(FooterOne);
