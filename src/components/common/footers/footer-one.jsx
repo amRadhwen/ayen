@@ -134,7 +134,7 @@ class FooterOne extends Component {
                                             distinctio
                                             dolores eligendi.
                                         </p>
-                                        <a style={{"color": "white"}} href={"#"} id={"learn-more-link"}>Learn more ></a>
+                                        <a style={{"color": "white"}} href={"#"} id={"learn-more-link"}>Learn more &gt;</a>
                                     </div>
                                 </div>
                             </div>
