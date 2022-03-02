@@ -89,7 +89,7 @@ class HeaderOne extends Component {
                     <div className="mobile-fix-option"/>
 
                     {/*Top Header Component*/}
-                    <TopBar/>
+                    {/*<TopBar/>*/}
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-12">

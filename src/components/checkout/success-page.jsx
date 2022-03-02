@@ -3,12 +3,7 @@ import React, {Component} from 'react';
 
 class orderSuccess extends Component {
 
-    constructor (props) {
-        super (props)
-
-    }
-
-    render (){
+    render (){  
 
         const {payment, items, symbol, orderTotal} = this.props.location.state;
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

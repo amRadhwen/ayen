@@ -33,7 +33,7 @@ class CollectionLeftSidebar extends Component {
                 </Helmet>
                 {/*SEO Support End */}
 
-                <Breadcrumb title={'Collection'}/>
+                {/*<Breadcrumb title={'Collection'}/>*/}
 
                 <section className="section-b-space">
                     <div className="collection-wrapper">

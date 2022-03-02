@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {ScrollContext} from 'react-router-scroll-4';
 import {IntlProvider, IntlActions} from 'react-redux-multilingual';
 import './index.scss';
+import './app.css';
 
 // Import custom components
 import store from './store';
@@ -12,15 +13,8 @@ import translations from './constants/translations'
 import {getAllProducts} from './actions'
 //import Landing from './components/landing'
 
-// Layouts
-//import Fashion from './components/layouts/fashion/main';
-//import Vegetables from './components/layouts/vegetables/main';
-//import Kids from './components/layouts/kids/main';
-//import Pets from './components/layouts/pets/main';
-//import Furniture from './components/layouts/furniture/main';
-//import Watch from './components/layouts/watch/main';
+// Layout
 import Beauty from './components/layouts/beauty/main';
-//import Electronic from './components/layouts/electronic/main';
 
 //Collection Pages
 import CollectionLeftSidebar from "./components/collection/collection-left-sidebar";
@@ -57,6 +51,8 @@ import ForgetPassword from './components/pages/forget-password'
 import Contact from './components/pages/contact'
 import Dashboard from './components/pages/dashboard'
 import Faq from './components/pages/faq'
+import VendorProfile from "./components/pages/vendor-profile";
+import Products from "./components/pages/Products";
 
 // Blog Pages
 import RightSide from './components/blogs/right-sidebar'
@@ -88,6 +84,7 @@ function Root() {
     useEffect(()=>{
         //change translation locale
         store.dispatch(IntlActions.setLocale("en"))
+        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/color3.css` );
     });
 
     return (
@@ -96,7 +93,6 @@ function Root() {
                 <BrowserRouter basename={'/'}>
                     <ScrollContext>
                         <Switch>
-                            {/*<Route exact path={`${process.env.PUBLIC_URL}/`} component={Beauty}/>*/}
                             <Layout>
                                 {/*Routes For Layouts*/}
 
@@ -122,11 +118,13 @@ function Root() {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/collection`} component={Collection}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/boutiques`} component={Collection}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/forget-password`} component={ForgetPassword}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/contact`} component={Contact}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/dashboard`} component={Dashboard}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/vendor-profile`} component={VendorProfile}/>
+                                <Route path={`${process.env.PUBLIC_URL}/pages/products`} component={Products}/>
 
                                 {/*Features*/}
                                 {/*Theme Elements*/}
@@ -149,7 +147,7 @@ function Root() {
                                 <Route path={`${process.env.PUBLIC_URL}/features/portfolio-masonary/:columns`} component={MasonaryGridCols}/>
 
                                 {/*Blog Pages*/}
-                                <Route path={`${process.env.PUBLIC_URL}/blog/right-sidebar`} component={RightSide}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/blog`} component={RightSide}/>
                                 <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details}/>
 
                                 {/*<Route exact path="*" component={PageNotFound} />*/}

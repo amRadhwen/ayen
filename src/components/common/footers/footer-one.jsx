@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-import { SlideUpDown } from "../../../services/script";
+import {SlideUpDown} from "../../../services/script";
 import LogoImage from "../headers/common/logo";
-import { withTranslate } from "react-redux-multilingual";
+import {withTranslate} from "react-redux-multilingual";
 
 class FooterOne extends Component {
 
@@ -11,14 +11,13 @@ class FooterOne extends Component {
         super(props);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         let contentwidth = window.innerWidth;
         if ((contentwidth) < 750) {
             SlideUpDown('footer-title');
-        }
-        else {
+        } else {
             let elems = document.querySelectorAll(".footer-title");
-            [].forEach.call(elems, function(elemt) {
+            [].forEach.call(elems, function (elemt) {
                 let el = elemt.nextElementSibling;
                 el.style = "display: block";
             });
@@ -26,84 +25,51 @@ class FooterOne extends Component {
     }
 
 
-    render () {
-        let { translate } = this.props;
+    render() {
+        let {translate} = this.props;
         return (
-            <footer className="footer-light">
-                <div className="light-layout">
+            <footer className="footer-dark">
+                {/*<div>
                     <div className="container">
-                        <section className="small-section border-section border-top-0">
+                        <section className="small-section">
                             <div className="row">
-                                <div className="col-lg-6">
-                                    <div className="subscribe">
-                                        <div>
-                                            <h4>{ translate("newsletter_title") }</h4>
-                                            <p>{ translate("newsletter_desc") }</p>
-                                        </div>
-                                    </div>
+                                <div className="col-lg-12">
+                                    <h4 className={"footer-main-title"}>NEWSLETTER</h4>
                                 </div>
-                                <div className="col-lg-6">
-                                    <form className="form-inline subscribe-form">
-                                        <div className="form-group mx-sm-3">
-                                            <input type="text"
-                                                   className="form-control"
-                                                   id="exampleFormControlInput1"
-                                                   placeholder={translate("enter_your_email")}/>
-                                        </div>
-                                        <button type="submit" className="btn btn-solid">{translate("subscribe")}</button>
+                                <div className="col-lg-12">
+                                    <h1 className={"footer-newsletter-special-offer"}>15% De Réduction Pour Les
+                                        Membres</h1>
+                                    <p className={"footer-newsletter-desc"}>
+                                        Vous pouvez vous désinscrire à tout moment. Vous trouverez <br/>pour cela nos
+                                        informations de contact dans les conditions d'utilisations de notre site.
+                                    </p>
+                                </div>
+                                <div className={"col-lg-12 footer-newsletter-form-section"}>
+                                    <form className={"footer-newsletter-form"}>
+                                        <input type="text" id={"newsletter-email"}/>
+                                        <button type={"submit"}>S'abonner</button>
                                     </form>
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/icon/top.png`} alt={"top.png"}/>
                                 </div>
                             </div>
                         </section>
                     </div>
-                </div>
-                <section className="section-b-space light-layout">
+                </div>*/}
+                <section className="section-b-space footer-main-menu">
                     <div className="container">
                         <div className="row footer-theme partition-f">
-                            <div className="col-lg-4 col-md-6">
-                                <div className="footer-title footer-mobile-title">
-                                    <h4>about</h4>
-                                </div>
-                                <div className="footer-contant">
-                                    <div className="footer-logo">
-                                        <LogoImage logo={this.props.logoName} />
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <div className="footer-social">
-                                        <ul>
-                                            <li>
-                                                <Link to={'https://www.facebook.com/'} ><i className="fa fa-facebook" aria-hidden="true"/></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={'https://plus.google.com/'} ><i className="fa fa-google-plus" aria-hidden="true"/></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={'https://twitter.com'}><i className="fa fa-twitter" aria-hidden="true"/></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={'https://instagram.com'}><i className="fa fa-instagram" aria-hidden="true"/></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={'https://rss.com/'}><i className="fa fa-rss" aria-hidden="true"/></Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col offset-xl-1">
+                            <div className="col">
                                 <div className="sub-title">
                                     <div className="footer-title">
-                                        <h4>my account</h4>
+                                        <h4>Products</h4>
                                     </div>
-                                    <div className="footer-contant">
+                                    <div className="footer-content">
                                         <ul>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>womens</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>clothing</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>accessories</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>featured</Link></li>
+                                            <li><a href="#">Furniture</a></li>
+                                            <li><a href="#">Decoration</a></li>
+                                            <li><a href="#">Storage</a></li>
+                                            <li><a href="#">Baby and Child</a></li>
+                                            <li><a href="#">Connected home</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -111,15 +77,18 @@ class FooterOne extends Component {
                             <div className="col">
                                 <div className="sub-title">
                                     <div className="footer-title">
-                                        <h4>why we choose</h4>
+                                        <h4>Rooms</h4>
                                     </div>
-                                    <div className="footer-contant">
+                                    <div className="footer-content">
                                         <ul>
-                                            <li><a href="#">shipping & return</a></li>
-                                            <li><a href="#">secure shopping</a></li>
-                                            <li><a href="#">gallary</a></li>
-                                            <li><a href="#">affiliates</a></li>
-                                            <li><a href="#">contacts</a></li>
+                                            <li><a href="#">Living room</a></li>
+                                            <li><a href="#">Dining room</a></li>
+                                            <li><a href="#">Cooked</a></li>
+                                            <li><a href="#">Badroom</a></li>
+                                            <li><a href="#">Bathroom</a></li>
+                                            <li><a href="#">Office</a></li>
+                                            <li><a href="#">Laundry</a></li>
+                                            <li><a href="#">Garage</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -127,53 +96,69 @@ class FooterOne extends Component {
                             <div className="col">
                                 <div className="sub-title">
                                     <div className="footer-title">
-                                        <h4>store information</h4>
+                                        <h4>Services</h4>
                                     </div>
-                                    <div className="footer-contant">
-                                        <ul className="contact-list">
-                                            <li><i className="fa fa-map-marker"></i>Multikart Demo Store, Demo store
-                                                India 345-659
-                                            </li>
-                                            <li><i className="fa fa-phone"></i>Call Us: 123-456-7898</li>
-                                            <li><i className="fa fa-envelope-o"></i>Email Us: <a
-                                                href="#">Support@Fiot.com</a></li>
-                                            <li><i className="fa fa-fax"></i>Fax: 123456</li>
+                                    <div className="footer-content">
+                                        <ul>
+                                            <li><a href="#">Click and collect</a></li>
+                                            <li><a href="#">Conception</a></li>
+                                            <li><a href="#">Installation</a></li>
+                                            <li><a href="#">Advices</a></li>
+                                            <li><a href="#">Gift card</a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="sub-title">
+                                    <div className="footer-title">
+                                        <h4>About</h4>
+                                    </div>
+                                    <div className="footer-content">
+                                        <ul>
+                                            <li><a href="#">Our story</a></li>
+                                            <li><a href="#">Our stories</a></li>
+                                            <li><a href="#">Our partners</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="sub-title">
+                                    <div className="footer-title">
+                                        <h4>We respect our planet</h4>
+                                    </div>
+                                    <div className="footer-content">
+                                        <p className={"footer-content-desc"}>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+                                            distinctio
+                                            dolores eligendi.
+                                        </p>
+                                        <a style={{"color": "white"}} href={"#"} id={"learn-more-link"}>Learn more ></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div className={"row"}>
+                            <div className={"col-lg-12 footer-social-media-links"}>
+                                <a href={"#"}><img src={`${process.env.PUBLIC_URL}/assets/images/icon/Facebook.png`}/></a>
+                                <a href={"#"}><img src={`${process.env.PUBLIC_URL}/assets/images/icon/Twitter.png`}/></a>
+                                <a href={"#"}><img src={`${process.env.PUBLIC_URL}/assets/images/icon/Linkedin.png`}/></a>
+                                <a href={"#"}><img src={`${process.env.PUBLIC_URL}/assets/images/icon/Instagram.png`}/></a>
+                            </div>
+                        </div>
                     </div>
                 </section>
-                <div className="sub-footer ">
+                <div className="sub-footer footer-main-subfooter">
                     <div className="container">
                         <div className="row">
-                            <div className="col-xl-6 col-md-6 col-sm-12">
-                                <div className="footer-end">
-                                    <p><i className="fa fa-copyright" aria-hidden="true"></i> 2018-19 themeforest
-                                        powered by pixelstrap</p>
-                                </div>
+                            <div className="col-lg-8 subfooter-left">
+                                <a href={"#"}><i className="fa fa-copyright" aria-hidden="true"></i> 2021 Ayen, Inc</a>
                             </div>
-                            <div className="col-xl-6 col-md-6 col-sm-12">
-                                <div className="payment-card-bottom">
-                                    <ul>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/visa.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/mastercard.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/paypal.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/american-express.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/discover.png`} alt="" /></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div className={"col-lg-4 subfooter-right"}>
+                                <a href={"#"}>Privacy policy</a>
+                                <a href={"#"}>Term of service</a>
+                                <a href={"#"}>Language</a>
                             </div>
                         </div>
                     </div>

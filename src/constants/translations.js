@@ -118,6 +118,7 @@ const module = {
             addr: "Adresse",
             zip: "code postal",
             birth_date: "date de naissance",
+            search_placeholder: "Que cherchez-vous ?"
         }
     },
     en: {
@@ -125,10 +126,10 @@ const module = {
         messages: {
             topbar_title: 'Welcome to Our store Multikart',
             call_us: 'Call Us',
-            home: 'home',
-            features: 'features',
+            home: 'Ayen Blog',
+            features: 'Salon',
             new: 'new',
-            blog: 'blog',
+            blog: 'Chambre',
             blog_left_sidebar: 'left sidebar',
             blog_right_sidebar: 'right sidebar',
             blog_detail: 'blog detail',
@@ -137,7 +138,7 @@ const module = {
             category_no_sidebar: 'no sidebar',
             category_metro: 'metro',
             category_full_width: 'full width',
-            products: 'products',
+            products: 'Cuisine',
             left_sidebar: 'left sidebar',
             right_sidebar: 'right sidebar',
             no_sidebar: 'no sidebar',
@@ -148,7 +149,7 @@ const module = {
             thumbnail_left: 'image left',
             thumbnail_right: 'image right',
             vertical_tab: 'vertical tab',
-            pages: 'pages',
+            pages: 'Salle de bain',
             about_us: 'about us',
             lookbook: 'lookbook',
             login: 'login',
@@ -165,7 +166,7 @@ const module = {
             order_success: 'order_success',
             dashboard: 'Dashboard',
             FAQ: 'FAQ',
-            shop: 'Shop',
+            shop: 'Jardin',
             mens_fashion: 'mens fashion',
             top: 'top',
             bottom: 'bottom',
@@ -238,7 +239,12 @@ const module = {
             tel :"Mobile",
             addr: "Address",
             zip: "zip code",
-            birth_date: "birth date"
+            birth_date: "birth date",
+            intertainment: "Loisirs",
+            jal_access: "Bijoux et accessoires",
+            games_div: "Jouets et divertissements",
+            art_coll: "Art et collections",
+            search_placeholder: "What are you looking for..."
         }
     }
 }
