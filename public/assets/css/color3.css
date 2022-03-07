@@ -9462,7 +9462,8 @@ footer p {
 }
 
 .login-page .theme-card .theme-form input {
-    border-color: #dddddd;
+    /* this is changed by amradhwen */
+    /*border-color: #dddddd;*/
     font-size: 12px;
     padding: 17px 25px;
     margin-bottom: 30px;

@@ -755,3 +755,11 @@ div.cart-qty-cls {
     display: none;
 }
 
+
+/*------------------ FROMS ------------------------*/
+
+div.form-field-error {
+    color: red;
+    font-family: inter, sans-serif;
+    font-size: 10px;
+}

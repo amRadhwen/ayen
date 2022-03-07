@@ -29,7 +29,7 @@ class FooterOne extends Component {
         let {translate} = this.props;
         return (
             <footer className="footer-dark">
-                {/*<div>
+                <div>
                     <div className="container">
                         <section className="small-section">
                             <div className="row">
@@ -54,7 +54,7 @@ class FooterOne extends Component {
                             </div>
                         </section>
                     </div>
-                </div>*/}
+                </div>
                 <section className="section-b-space footer-main-menu">
                     <div className="container">
                         <div className="row footer-theme partition-f">
