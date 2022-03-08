@@ -758,8 +758,6 @@ div.cart-qty-cls {
 
 /*------------------ FROMS ------------------------*/
 
-div.form-field-error {
-    color: red;
-    font-family: inter, sans-serif;
-    font-size: 10px;
+section.login-page div.form-group {
+    margin-bottom: 2rem;
 }

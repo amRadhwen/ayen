@@ -37,6 +37,7 @@ export default function Login() {
                                                 id="email"
                                                 name="email"
                                                 placeholder="Email"
+                                                autoComplete="off"
                                             />
                                             {errors.email && touched.email ? (
                                                 <div className="invalid-feedback">{errors.email}</div>
@@ -50,6 +51,7 @@ export default function Login() {
                                                 id="password"
                                                 name="password"
                                                 placeholder="Enter your password"
+                                                autoComplete="off"
                                             />
                                             {errors.password && touched.password ? (
                                                 <div className="invalid-feedback">{errors.password}</div>

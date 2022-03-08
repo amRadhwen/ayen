@@ -7910,11 +7910,13 @@ footer{
         font-size: 14px;
         font-weight: 600;
       }
+      /* this is modified by amradhwen*/
       input {
-        border-color: $round-border;
+        /*border-color: $round-border;*/
         font-size: 12px;
         padding: 17px 25px;
-        margin-bottom: 30px;
+        /*margin-bottom: 30px;*/
+        margin-bottom: 10px;
         height: inherit;
       }
     }

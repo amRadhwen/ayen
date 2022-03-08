@@ -14,7 +14,7 @@ import {getAllProducts} from './actions'
 //import Landing from './components/landing'
 
 // Layout
-import Beauty from './components/layouts/beauty/main';
+//import Beauty from './components/layouts/beauty/main';
 
 //Collection Pages
 import CollectionLeftSidebar from "./components/collection/collection-left-sidebar";
@@ -84,7 +84,7 @@ function Root() {
     useEffect(()=>{
         //change translation locale
         store.dispatch(IntlActions.setLocale("en"))
-        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/color3.css` );
+        //document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/color3.css` );
     });
 
     return (
@@ -116,7 +116,7 @@ function Root() {
                                 <Route path={`${process.env.PUBLIC_URL}/pages/404`} component={PageNotFound}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/lookbook`} component={lookbook}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>
+                                {/*<Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>*/}
                                 <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/boutiques`} component={Collection}/>
                                 <Route path={`${process.env.PUBLIC_URL}/pages/forget-password`} component={ForgetPassword}/>
