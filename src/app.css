@@ -758,6 +758,13 @@ div.cart-qty-cls {
 
 /*------------------ FROMS ------------------------*/
 
+/*----LOGIN PAGE------*/
 section.login-page div.form-group {
     margin-bottom: 2rem;
+}
+
+/*----------REGISTER PAGE------*/
+
+section.register-page form.theme-form div.form-row {
+    margin-bottom: 20px;
 }

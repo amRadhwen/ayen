@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {ScrollContext} from 'react-router-scroll-4';
-import {IntlProvider, IntlActions} from 'react-redux-multilingual';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ScrollContext } from 'react-router-scroll-4';
+import { IntlProvider, IntlActions } from 'react-redux-multilingual';
 import './index.scss';
 import './app.css';
 
 // Import custom components
 import store from './store';
 import translations from './constants/translations'
-import {getAllProducts} from './actions'
+import { getAllProducts } from './actions'
 //import Landing from './components/landing'
 
 // Layout
@@ -42,7 +42,7 @@ import orderSuccess from './components/checkout/success-page'
 // Extra Pages
 import aboutUs from './components/pages/about-us'
 import PageNotFound from './components/pages/404'
-import lookbook from './components/pages/lookbook'
+//import lookbook from './components/pages/lookbook'
 import Login from './components/pages/login'
 import Register from './components/pages/register'
 import Search from './components/pages/search'
@@ -81,10 +81,9 @@ import MasonaryGridCols from "./components/features/portfolio/masonary-grid-cols
 function Root() {
     store.dispatch(getAllProducts());
 
-    useEffect(()=>{
+    useEffect(() => {
         //change translation locale
-        store.dispatch(IntlActions.setLocale("en"))
-        //document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/color3.css` );
+        store.dispatch(IntlActions.setLocale("en"));
     });
 
     return (
@@ -92,67 +91,62 @@ function Root() {
             <IntlProvider translations={translations} locale="fr">
                 <BrowserRouter basename={'/'}>
                     <ScrollContext>
-                        <Switch>
-                            <Layout>
-                                {/*Routes For Layouts*/}
+                        <Layout>
+                            <Switch>
 
                                 {/*Routes For Features (Product Collection) */}
-                                <Route path={`${process.env.PUBLIC_URL}/left-sidebar/collection`} component={CollectionLeftSidebar}/>
+                                <Route path={`${process.env.PUBLIC_URL}/left-sidebar/collection`} component={CollectionLeftSidebar} />
 
                                 {/*Routes For Single Product*/}
-                                <Route path={`${process.env.PUBLIC_URL}/left-image/product/:id`} component={LeftImage}/>
+                                <Route path={`${process.env.PUBLIC_URL}/left-image/product/:id`} component={LeftImage} />
 
-                                {/*Routes For custom Features*/}
-                                <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList}/>
-                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare}/>
-                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
-                                <Route path={`${process.env.PUBLIC_URL}/order-success`} component={orderSuccess}/>
+                                <Route path={`${process.env.PUBLIC_URL}/signin`} component={Login} />
+                                <Route path={`${process.env.PUBLIC_URL}/signup`} component={Register} />
+                                <Route path={`${process.env.PUBLIC_URL}/search`} component={Search} />
+                                <Route path={`${process.env.PUBLIC_URL}/boutiques`} component={Collection} />
+                                <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword} />
+                                <Route path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />
+                                <Route path={`${process.env.PUBLIC_URL}/faq`} component={Faq} />
+                                <Route path={`${process.env.PUBLIC_URL}/vendor-profile`} component={VendorProfile} />
+                                <Route path={`${process.env.PUBLIC_URL}/products`} component={Products} />
+                                <Route path={`${process.env.PUBLIC_URL}/about-us`} component={aboutUs} />
+                                <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart} />
+                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList} />
+                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare} />
+                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut} />
+                                <Route path={`${process.env.PUBLIC_URL}/order-success`} component={orderSuccess} />
+                                <Route path={`${process.env.PUBLIC_URL}/sales/orders`} component={aboutUs} />
 
-                                <Route path={`${process.env.PUBLIC_URL}/sales/orders`} component={aboutUs}/>
-
-                                {/*Routes For Extra Pages*/}
-                                <Route path={`${process.env.PUBLIC_URL}/pages/about-us`} component={aboutUs}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/404`} component={PageNotFound}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/lookbook`} component={lookbook}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login}/>
-                                {/*<Route path={`${process.env.PUBLIC_URL}/pages/register`} component={Register}/>*/}
-                                <Route path={`${process.env.PUBLIC_URL}/pages/search`} component={Search}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/boutiques`} component={Collection}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/forget-password`} component={ForgetPassword}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/contact`} component={Contact}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/dashboard`} component={Dashboard}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/vendor-profile`} component={VendorProfile}/>
-                                <Route path={`${process.env.PUBLIC_URL}/pages/products`} component={Products}/>
 
                                 {/*Features*/}
                                 {/*Theme Elements*/}
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-title`} component={ElementTitle}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-banner`} component={ElementBanner}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-slider`} component={ElementSlider}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-category`} component={ElementCategory}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-service`} component={ElementService}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-ratio`} component={ElementRatio}/>
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-title`} component={ElementTitle} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-banner`} component={ElementBanner} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-slider`} component={ElementSlider} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-category`} component={ElementCategory} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-service`} component={ElementService} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-ratio`} component={ElementRatio} />
 
                                 {/*Product Elements*/}
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-box`} component={ElementProductBox}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-slider`} component={ElementProductSlider}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-no-slider`} component={ElementProductNoSlider}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-multiple-slider`} component={ElementMultipleSlider}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-tab`} component={ElementProductTab}/>
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-box`} component={ElementProductBox} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-slider`} component={ElementProductSlider} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-no-slider`} component={ElementProductNoSlider} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-multiple-slider`} component={ElementMultipleSlider} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-tab`} component={ElementProductTab} />
 
                                 {/*Portfolios*/}
-                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-grid/:columns`} component={GridCols}/>
-                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-masonary/:columns`} component={MasonaryGridCols}/>
+                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-grid/:columns`} component={GridCols} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-masonary/:columns`} component={MasonaryGridCols} />
 
                                 {/*Blog Pages*/}
-                                <Route exact path={`${process.env.PUBLIC_URL}/blog`} component={RightSide}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/blog`} component={RightSide} />
+                                <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details} />
 
-                                {/*<Route exact path="*" component={PageNotFound} />*/}
-                            </Layout>
-                        </Switch>
+                                <Route path="*" component={PageNotFound} />
+
+                            </Switch>
+                        </Layout>
                     </ScrollContext>
                 </BrowserRouter>
             </IntlProvider>
@@ -160,6 +154,6 @@ function Root() {
     );
 }
 
-ReactDOM.render(<Root/>, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
 
 

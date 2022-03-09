@@ -9510,11 +9510,13 @@ footer p {
     font-weight: 600;
 }
 
+/* this is modified by amradhwen*/
 .register-page .theme-card .theme-form input {
-    border-color: #dddddd;
+    /*border-color: #dddddd;*/
     font-size: 12px;
     padding: 17px 25px;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
+    margin-bottom: 10px;
     height: inherit;
 }
 

@@ -75,7 +75,7 @@ export default function Login() {
                                     quick and easy. It allows you to be able to order from our
                                     shop. To start shopping click register.
                                 </p>
-                                <Link to="/pages/register" className="btn btn-solid">
+                                <Link to="/signup" className="btn btn-solid">
                                     Create an Account
                                 </Link>
                             </div>

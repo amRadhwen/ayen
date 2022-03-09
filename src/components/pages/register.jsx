@@ -1,190 +1,191 @@
-import React, {useState, useEffect} from 'react';
-import Breadcrumb from "../common/breadcrumb";
-import {withTranslate} from "react-redux-multilingual";
-import {connect} from "react-redux";
-import axios from "axios";
+import React from 'react';
+//import Breadcrumb from "../common/breadcrumb";
+//import {connect} from "react-redux";
+//import axios from "axios";
+import { Formik, Form, Field } from "formik";
+import { signupSchema } from '../../validation/signupSchema';
 
 
 const Register = (props) => {
 
-    const {translate} = props;
-
-    const [user, setUser] = useState({});
-
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [rpassword, setRpassword] = useState("");
-    const [tel, setTel] = useState("")
-    const [addr, setAddr] = useState("")
-    const [zip, setZip] = useState("")
-    const [birthDate, setBirthDate] = useState("")
-
-    const checkPasswordsMath = (e) => {
-        return password.startsWith(e.target.value) && password.length === e.target.value.length;
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setUser({
-            first_name: firstName,
-            last_name: lastName,
-            email,
-            password,
-            tel,
-            addr,
-            zip,
-            birth_date: birthDate
-        })
-    }
-
-
-    useEffect(()=>{
-        console.log(user);
-    }, [user])
-
-
-
     return (
         <div>
-            <Breadcrumb title={'create_account'}/>
-            {/*Regsiter section*/}
             <section className="register-page section-b-space">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h3>{translate("create_account")}</h3>
+                            <h3>Créer un Compte</h3>
                             <div className="theme-card">
-                                <form className="theme-form" onSubmit={handleSubmit}>
-                                    <div className="form-row">
-                                        <div className="col-md-6">
-                                            <label htmlFor="first_name">{translate("first_name")}</label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="first_name"
-                                                placeholder="Nom"
-                                                value={firstName}
-                                                onChange={(e)=>{setFirstName(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label htmlFor="last_name">{translate("last_name")}</label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="last_name"
-                                                placeholder="Prénom"
-                                                value={lastName}
-                                                onChange={(e)=>{setLastName(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="col-md-6">
-                                            <label htmlFor="email">{translate("email")}</label>
-                                            <input
-                                                type="email"
-                                                className="form-control"
-                                                id="email"
-                                                placeholder="Email"
-                                                value={email}
-                                                onChange={(e)=>{setEmail(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label htmlFor="tel">{translate("tel")}</label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="tel"
-                                                placeholder="Téléphone"
-                                                value={tel}
-                                                onChange={(e)=>{setTel(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="col-md-6">
-                                            <label htmlFor="addr">{translate("addr")}</label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="addr"
-                                                placeholder="Adresse"
-                                                value={addr}
-                                                onChange={(e)=>{setAddr(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label htmlFor="zip">{translate("zip")}</label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="zip"
-                                                placeholder="Code Postal"
-                                                value={zip}
-                                                onChange={(e)=>{setZip(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className={"form-row"}>
-                                        <div className="col-md-6">
-                                            <label htmlFor="password">{translate("password")}</label>
-                                            <input
-                                                type="password"
-                                                className="form-control"
-                                                id="review"
-                                                placeholder="Mot de passe"
-                                                value={password}
-                                                onChange={(e)=>{setPassword(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label htmlFor="rpassword">{translate("repeat_password")}</label>
-                                            <input
-                                                type="rpassword"
-                                                className="form-control"
-                                                id="review"
-                                                placeholder="Répéter mot de passe"
-                                                value={rpassword}
-                                                onChange={(e)=>{setRpassword(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="col-md-12">
-                                            <label htmlFor="birth_date">{translate("birth_date")}</label>
-                                            <input
-                                                type="date"
-                                                className="form-control"
-                                                id="birth_date"
-                                                placeholder="Date de naissance"
-                                                value={birthDate}
-                                                onChange={(e)=>{setBirthDate(e.target.value)}}
-                                                required={true}
-                                            />
-                                        </div>
-                                        <a className="btn btn-solid" onClick={handleSubmit}>{translate("create_account")}</a>
-                                    </div>
-                                </form>
+                                <Formik
+                                    initialValues={{
+                                        firstName: "",
+                                        lastName: "",
+                                        email: "",
+                                        password: "",
+                                        rpassword: "",
+                                        tel: "",
+                                        addr: "",
+                                        zip: "",
+                                        birthdate: ""
+                                    }}
+
+                                    validationSchema={signupSchema}
+
+                                    onSubmit={values => {
+                                        console.log(values);
+                                    }}
+                                >
+                                    {({ errors, touched }) => (
+                                        <Form className="theme-form">
+                                            <div className="form-row">
+                                                <div className="col-md-6">
+                                                    <label htmlFor="first_name">Nom</label>
+                                                    <Field
+                                                        type="text"
+                                                        className={`form-control${errors.firstName && touched.firstName ? " is-invalid":""}`}
+                                                        id="first_name"
+                                                        placeholder="Nom"
+                                                        name="firstName"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.firstName && touched.firstName ? (
+                                                        <div className={"invalid-feedback"}>{errors.firstName}</div>
+                                                    ) : null}
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <label htmlFor="last_name">Prénom</label>
+                                                    <Field
+                                                        type="text"
+                                                        className={`form-control${errors.lastName && touched.lastName ? " is-invalid":""}`}
+                                                        id="last_name"
+                                                        placeholder="Prénom"
+                                                        name="lastName"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.lastName && touched.lastName ? (
+                                                        <div className={"invalid-feedback"}>{errors.lastName}</div>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                            <div className="form-row">
+                                                <div className="col-md-6">
+                                                    <label htmlFor="email">E-mail</label>
+                                                    <Field
+                                                        type="email"
+                                                        className={`form-control${errors.email && touched.email ? " is-invalid":""}`}
+                                                        id="email"
+                                                        placeholder="Email"
+                                                        name="email"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.email && touched.email ? (
+                                                        <div className={"invalid-feedback"}>{errors.email}</div>
+                                                    ) : null}
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <label htmlFor="tel">Téléphone</label>
+                                                    <Field
+                                                        type="text"
+                                                        className={`form-control${errors.tel && touched.tel ? " is-invalid":""}`}
+                                                        id="tel"
+                                                        placeholder="Téléphone"
+                                                        name="tel"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.tel && touched.tel ? (
+                                                        <div className={"invalid-feedback"}>{errors.tel}</div>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                            <div className="form-row">
+                                                <div className="col-md-6">
+                                                    <label htmlFor="addr">Addresse</label>
+                                                    <Field
+                                                        type="text"
+                                                        className={`form-control${errors.addr && touched.addr ? " is-invalid":""}`}
+                                                        id="addr"
+                                                        placeholder="Adresse"
+                                                        name="addr"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.addr && touched.addr ? (
+                                                        <div className={"invalid-feedback"}>{errors.addr}</div>
+                                                    ) : null}
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <label htmlFor="zip">Code Postal</label>
+                                                    <Field
+                                                        type="text"
+                                                        className={`form-control${errors.zip && touched.zip ? " is-invalid":""}`}
+                                                        id="zip"
+                                                        placeholder="Code Postal"
+                                                        name="zip"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.zip && touched.zip ? (
+                                                        <div className={"invalid-feedback"}>{errors.zip}</div>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                            <div className={"form-row"}>
+                                                <div className="col-md-6">
+                                                    <label htmlFor="password">Mot de passe</label>
+                                                    <Field
+                                                        type="password"
+                                                        className={`form-control${errors.password && touched.password ? " is-invalid":""}`}
+                                                        id="review"
+                                                        placeholder="Mot de passe"
+                                                        name="password"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.password && touched.password ? (
+                                                        <div className={"invalid-feedback"}>{errors.password}</div>
+                                                    ) : null}
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <label htmlFor="rpassword">Répéter mot de passe</label>
+                                                    <Field
+                                                        type="rpassword"
+                                                        className={`form-control${errors.rpassword && touched.rpassword ? " is-invalid":""}`}
+                                                        id="review"
+                                                        placeholder="Répéter mot de passe"
+                                                        name="rpassword"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.rpassword && touched.rpassword ? (
+                                                        <div className={"invalid-feedback"}>{errors.rpassword}</div>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                            <div className="form-row">
+                                                <div className="col-md-6">
+                                                    <label htmlFor="birth_date">Date de naissance</label>
+                                                    <Field
+                                                        type="date"
+                                                        className={`form-control${errors.birthdate && touched.birthdate ? " is-invalid":""}`}
+                                                        id="birth_date"
+                                                        placeholder="Date de naissance"
+                                                        name="birthdate"
+                                                        autoComplete={"off"}
+                                                    />
+                                                    {errors.birthdate && touched.birthdate ? (
+                                                        <div className={"invalid-feedback"}>{errors.birthdate}</div>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                            <div className='form-row'>
+                                                <button type="submit" className="btn btn-solid">Créer un compte</button>
+                                            </div>
+                                        </Form>
+                                    )}
+                                </Formik>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
         </div>
     )
 }
 
-export default withTranslate(Register);
+export default Register;

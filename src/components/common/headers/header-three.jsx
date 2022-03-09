@@ -156,7 +156,7 @@ class HeaderThree extends Component {
                                                     </li>
                                                     */}
                                                     <li className={"onhover-div user-login"}>
-                                                        <Link to="/pages/login" >Se Connecter</Link>
+                                                        <Link to="/signin" >Se Connecter</Link>
                                                         {/*<Link to="/pages/login" className="user-login-hidden fa fa-user-circle-o" />*/}
                                                     </li>
                                                     {/*Header Cart Component */}
