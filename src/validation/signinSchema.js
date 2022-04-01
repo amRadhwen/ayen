@@ -2,7 +2,6 @@ import * as yup from "yup";
 
 
 export const signinSchema = yup.object().shape({
-    email: yup.string().email("Adresse email invalide.").required("Addresse email requise."),
+    login: yup.string().required("Login requis."),
     password: yup.string().required("Mot de passe requis.")
-
 });

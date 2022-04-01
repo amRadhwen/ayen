@@ -2,9 +2,7 @@ import {
     ADD_TO_WISHLIST,REMOVE_FROM_WISHLIST } from "../constants/ActionTypes";
 
 
-export default function wishlistReducer(state = {
-    list: []
-}, action) {
+export default function wishlistReducer(state = {list: []}, action) {
     switch (action.type) {
         case ADD_TO_WISHLIST:
             const productId = action.product.id
@@ -30,6 +28,6 @@ export default function wishlistReducer(state = {
             }
 
         default:
+            return state;
     }
-    return state;
 }

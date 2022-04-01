@@ -1,43 +1,53 @@
-import React, {Component} from 'react';
-import Breadcrumb from "../common/breadcrumb";
+import React from 'react';
+import { Formik, Form, Field } from "formik";
+import { forgetPasswordSchema } from "../../validation/forgetPasswordSchema";
 
-class ForgetPassword extends Component {
+export default function ForgetPassword() {
 
-    constructor (props) {
-        super (props)
-    }
+    return (
+        <div>
+            <section className="pwd-page section-b-space">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3">
+                            <h2>Mot de passe oubliée ?</h2>
+                            <Formik
+                                initialValues={{
+                                    email: ""
+                                }}
 
-    render (){
+                                validationSchema={forgetPasswordSchema}
 
-
-        return (
-            <div>
-                <Breadcrumb title={'forget password'}/>
-                
-                
-                {/*Forget Password section*/}
-                <section className="pwd-page section-b-space">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-6 offset-lg-3">
-                                <h2>Forget Your Password</h2>
-                                <form className="theme-form">
+                                onSubmit={(values)=>{
+                                    console.log(values);
+                                }}
+                            >
+                                {({errors, touched})=> (
+                                <Form className="theme-form">
                                     <div className="form-row">
                                         <div className="col-md-12">
-                                            <input type="text" className="form-control" id="email"
-                                                   placeholder="Enter Your Email" required="" />
+                                            <Field 
+                                                type="text" 
+                                                className={`form-control${errors.email && touched.email ? " is-invalid" : ""}`}
+                                                id="email"
+                                                placeholder="Entrer Votre Email" 
+                                                name="email"
+                                                autoComplete="off"
+                                            />
+                                            { errors.email && touched.email ? (
+                                                <div className='invalid-feedback'>{errors.email}</div>
+                                            ) : null }
                                         </div>
-                                        <a href="#" className="btn btn-solid">Submit</a>
+                                        <button type="submit" className="btn btn-solid">Envoyer</button>
                                     </div>
-                                </form>
-                            </div>
+                                </Form>
+                                )}
+                            </Formik>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-            </div>
-        )
-    }
+        </div>
+    )
 }
-
-export default ForgetPassword

@@ -19,7 +19,6 @@ class wishList extends Component {
 
         return (
             <div>
-                <Breadcrumb title={'Wishlist'} />
                 {Items.length>0 ?
                 <section className="wishlist-section section-b-space">
                     <div className="container">
@@ -118,8 +117,8 @@ class wishList extends Component {
     }
 }
 const mapStateToProps = (state) => ({
-    Items: state.wishlist.list,
-    symbol: state.data.symbol,
+    Items: state.wishList.list,
+    symbol: state.productList.symbol,
 })
 
 export default connect(

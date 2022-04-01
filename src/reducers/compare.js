@@ -1,10 +1,9 @@
 import {
-    ADD_TO_COMPARE, REMOVE_FROM_COMPARE } from "../constants/ActionTypes";
+    ADD_TO_COMPARE, REMOVE_FROM_COMPARE 
+} from "../constants/ActionTypes";
 
 
-export default function compareReducer(state = {
-    items: []
-}, action) {
+export default function compareReducer(state = {items: []}, action) {
     switch (action.type) {
         case ADD_TO_COMPARE:
             const productId = action.product.id
@@ -30,6 +29,6 @@ export default function compareReducer(state = {
             }
 
         default:
+            return state;
     }
-    return state;
 }

@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
-import { IntlProvider, IntlActions } from 'react-redux-multilingual';
 import './index.scss';
 import './app.css';
 
 // Import custom components
 import store from './store';
-import translations from './constants/translations'
 import { getAllProducts } from './actions'
 //import Landing from './components/landing'
 
@@ -40,13 +38,15 @@ import checkOut from './components/checkout'
 import orderSuccess from './components/checkout/success-page'
 
 // Extra Pages
+import Home from './components/pages/Home';
+import Notification from "./components/pages/Notification";
 import aboutUs from './components/pages/about-us'
 import PageNotFound from './components/pages/404'
 //import lookbook from './components/pages/lookbook'
-import Login from './components/pages/login'
-import Register from './components/pages/register'
+import Signin from './components/pages/signin'
+import Signup from './components/pages/signup'
 import Search from './components/pages/search'
-import Collection from './components/pages/collection'
+import Shops from './components/pages/Shops'
 import ForgetPassword from './components/pages/forget-password'
 import Contact from './components/pages/contact'
 import Dashboard from './components/pages/dashboard'
@@ -77,22 +77,20 @@ import ElementProductTab from "./components/features/product/element-product-tab
 // Portfolio Features
 import GridCols from "./components/features/portfolio/grid-cols"
 import MasonaryGridCols from "./components/features/portfolio/masonary-grid-cols"
+import withAuth from './protection/withAuth';
 
 function Root() {
     store.dispatch(getAllProducts());
 
-    useEffect(() => {
-        //change translation locale
-        store.dispatch(IntlActions.setLocale("en"));
-    });
-
     return (
         <Provider store={store}>
-            <IntlProvider translations={translations} locale="fr">
                 <BrowserRouter basename={'/'}>
                     <ScrollContext>
                         <Layout>
                             <Switch>
+
+                                <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+                                <Route path={`${process.env.PUBLIC_URL}/notifications`} component={Notification} />
 
                                 {/*Routes For Features (Product Collection) */}
                                 <Route path={`${process.env.PUBLIC_URL}/left-sidebar/collection`} component={CollectionLeftSidebar} />
@@ -100,48 +98,48 @@ function Root() {
                                 {/*Routes For Single Product*/}
                                 <Route path={`${process.env.PUBLIC_URL}/left-image/product/:id`} component={LeftImage} />
 
-                                <Route path={`${process.env.PUBLIC_URL}/signin`} component={Login} />
-                                <Route path={`${process.env.PUBLIC_URL}/signup`} component={Register} />
-                                <Route path={`${process.env.PUBLIC_URL}/search`} component={Search} />
-                                <Route path={`${process.env.PUBLIC_URL}/boutiques`} component={Collection} />
-                                <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword} />
+                                <Route path={`${process.env.PUBLIC_URL}/signin`} component={Signin} />
+                                <Route path={`${process.env.PUBLIC_URL}/signup`} render={props=><Signup {...props} />} />
+                                <Route path={`${process.env.PUBLIC_URL}/search`} component={withAuth(Search)} />
+                                <Route path={`${process.env.PUBLIC_URL}/shops`} component={Shops} />
+                                <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={withAuth(ForgetPassword)} />
                                 <Route path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
-                                <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={withAuth(Dashboard)} />
                                 <Route path={`${process.env.PUBLIC_URL}/faq`} component={Faq} />
                                 <Route path={`${process.env.PUBLIC_URL}/vendor-profile`} component={VendorProfile} />
                                 <Route path={`${process.env.PUBLIC_URL}/products`} component={Products} />
                                 <Route path={`${process.env.PUBLIC_URL}/about-us`} component={aboutUs} />
                                 <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart} />
-                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList} />
-                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare} />
-                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut} />
-                                <Route path={`${process.env.PUBLIC_URL}/order-success`} component={orderSuccess} />
-                                <Route path={`${process.env.PUBLIC_URL}/sales/orders`} component={aboutUs} />
+                                <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={withAuth(wishList)} />
+                                <Route path={`${process.env.PUBLIC_URL}/compare`} component={withAuth(Compare)} />
+                                <Route path={`${process.env.PUBLIC_URL}/checkout`} component={withAuth(checkOut)} />
+                                <Route path={`${process.env.PUBLIC_URL}/order-success`} component={withAuth(orderSuccess)} />
+                                {/*<Route path={`${process.env.PUBLIC_URL}/sales/orders`} component={aboutUs} />*/}
 
 
                                 {/*Features*/}
                                 {/*Theme Elements*/}
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-title`} component={ElementTitle} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-banner`} component={ElementBanner} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-slider`} component={ElementSlider} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-category`} component={ElementCategory} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-service`} component={ElementService} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-ratio`} component={ElementRatio} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-title`} component={withAuth(ElementTitle)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-banner`} component={withAuth(ElementBanner)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-slider`} component={withAuth(ElementSlider)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-category`} component={withAuth(ElementCategory)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-service`} component={withAuth(ElementService)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-ratio`} component={withAuth(ElementRatio)} />
 
                                 {/*Product Elements*/}
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-box`} component={ElementProductBox} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-slider`} component={ElementProductSlider} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-no-slider`} component={ElementProductNoSlider} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-multiple-slider`} component={ElementMultipleSlider} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-tab`} component={ElementProductTab} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-box`} component={withAuth(ElementProductBox)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-slider`} component={withAuth(ElementProductSlider)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-no-slider`} component={withAuth(ElementProductNoSlider)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-multiple-slider`} component={withAuth(ElementMultipleSlider)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/element-product-tab`} component={withAuth(ElementProductTab)} />
 
                                 {/*Portfolios*/}
-                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-grid/:columns`} component={GridCols} />
-                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-masonary/:columns`} component={MasonaryGridCols} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-grid/:columns`} component={withAuth(GridCols)} />
+                                <Route path={`${process.env.PUBLIC_URL}/features/portfolio-masonary/:columns`} component={withAuth(MasonaryGridCols)} />
 
                                 {/*Blog Pages*/}
                                 <Route exact path={`${process.env.PUBLIC_URL}/blog`} component={RightSide} />
-                                <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details} />
+                                <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={withAuth(Details)} />
 
                                 <Route path="*" component={PageNotFound} />
 
@@ -149,7 +147,6 @@ function Root() {
                         </Layout>
                     </ScrollContext>
                 </BrowserRouter>
-            </IntlProvider>
         </Provider>
     );
 }

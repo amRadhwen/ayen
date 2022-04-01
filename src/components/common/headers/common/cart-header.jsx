@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 
 const CartHeader  = ({item, total, symbol, removeFromCart}) => (
@@ -12,7 +12,7 @@ const CartHeader  = ({item, total, symbol, removeFromCart}) => (
                 </div>
                 {/*<span>{cart}</span>*/}
                 <div className="close-circle">
-                    <a href={null} onClick={ removeFromCart}><i className="fa fa-times" aria-hidden="true"></i></a>
+                    <a href={null} onClick={(e)=>{removeFromCart()}} ><i className="fa fa-times" aria-hidden="true"></i></a>
                 </div>
             </li>
         )

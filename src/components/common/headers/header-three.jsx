@@ -1,48 +1,54 @@
-import React, {Component} from 'react';
-import {Link, NavLink} from 'react-router-dom';
-import {IntlActions} from 'react-redux-multilingual'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import Pace from 'react-pace-progress'
 
 // Import custom components
-import store from '../../../store';
 import NavBar from "./common/navbar";
-import SideBar from "./common/sidebar";
+//import SideBar from "./common/sidebar";
 import CartContainer from "./../../../containers/CartContainer";
-import TopBarDark from "./common/topbar-dark";
-import {changeCurrency} from '../../../actions'
-import {connect} from "react-redux";
+//import TopBarDark from "./common/topbar-dark";
 import LogoImage from "./common/logo";
-import {withTranslate} from "react-redux-multilingual";
 
-class HeaderThree extends Component {
+import Profilesection from './common/profile-section';
 
-    constructor(props) {
-        super(props);
+import { SIGNIN_RESET } from '../../../constants/ActionTypes';
 
-        this.state = {
-            isLoading: false
-        }
-    }
+function HeaderThree(props) {
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    let { token } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
     /*=====================
          Pre loader
          ==========================*/
-         /*
-    componentDidMount() {
-        setTimeout(function () {
-            document.querySelector(".loader-wrapper").style = "display: none";
-        }, 2000);
-    }
-    */
-    componentWillMount() {
-        window.addEventListener('scroll', this.handleScroll);
+    /*
+componentDidMount() {
+   setTimeout(function () {
+       document.querySelector(".loader-wrapper").style = "display: none";
+   }, 2000);
+}
+ 
+componentWillMount() {
+   window.addEventListener('scroll', handleScroll);
+}
+
+componentWillUnmount() {
+   window.removeEventListener('scroll', handleScroll);
+}*/
+
+    const handleSignout = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: SIGNIN_RESET
+        })
+        localStorage.removeItem("auth");
+        window.location.assign("/signin");
     }
 
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    handleScroll = () => {
+    const handleScroll = () => {
         let number = window.pageXOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
         if (number >= 300) {
@@ -55,17 +61,13 @@ class HeaderThree extends Component {
         }
     }
 
-    changeLanguage(lang) {
-        store.dispatch(IntlActions.setLocale(lang))
-    }
-
-    openNav() {
+    const openNav = () => {
         const openmyslide = document.getElementById("mySidenav");
         if (openmyslide) {
             openmyslide.classList.add('open-side')
         }
     }
-
+    /*
     openSearch() {
         document.getElementById("search-overlay").style.display = "block";
     }
@@ -75,51 +77,60 @@ class HeaderThree extends Component {
     }
 
     load = () => {
-        this.setState({isLoading: true});
+        setState({isLoading: true});
         fetch().then(() => {
             // deal with data fetched
-            this.setState({isLoading: false})
+            setState({isLoading: false})
         })
     };
+    */
 
-    render() {
-        const {translate} = this.props;
-        return (
-            <div>
-                <header id="sticky" className="sticky header-2 header-6">
-                    {this.state.isLoading ? <Pace color="#27ae60"/> : null}
-                    <div className="mobile-fix-option"/>
-                    {/*Top Header Component*/}
-                    {/*<TopBarDark/>*/}
+    useEffect(() => {
+        // replaces componentDidMount
+        window.addEventListener('scroll', handleScroll);
+        //replaces componentWillUnmount
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
 
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-sm-12">
-                                <div className="main-menu border-section border-top-0">
-                                    <div className="brand-logo layout2-logo">
-                                        <LogoImage logo={this.props.logoName}/>
-                                    </div>
-                                    <div className="form-search-div">
-                                        <form className="form_search" role="form">
-                                            <button type="submit" name="nav-submit-button" className="btn-search">
-                                                <i className="fa fa-search"/>
-                                            </button>
-                                            <input id="query search-autocomplete" type="search"
-                                                   placeholder={"Que Cherchez-vous ?"}
-                                                   className="nav-search nav-search-field" aria-expanded="true"/>
-                                        </form>
-                                    </div>
-                                    <div className="menu-right pull-right">
-                                        <div>
-                                            <div className="icon-nav">
-                                                <ul>
-                                                    {/*
+    }, [token]);
+
+    return (
+        <div>
+            <header id="sticky" className="sticky header-2 header-6">
+                {isLoading ? <Pace color="#27ae60" /> : null}
+                <div className="mobile-fix-option" />
+                {/*Top Header Component*/}
+                {/*<TopBarDark/>*/}
+
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <div className="main-menu border-section border-top-0">
+                                <div className="brand-logo layout2-logo">
+                                    <LogoImage logo={props.logoName} />
+                                </div>
+                                <div className="form-search-div">
+                                    <form className="form_search" role="form">
+                                        <button type="submit" name="nav-submit-button" className="btn-search">
+                                            <i className="fa fa-search" />
+                                        </button>
+                                        <input id="query search-autocomplete" type="search"
+                                            placeholder={"Que Cherchez-vous ?"}
+                                            className="nav-search nav-search-field" aria-expanded="true" />
+                                    </form>
+                                </div>
+                                <div className="menu-right pull-right">
+                                    <div>
+                                        <div className="icon-nav">
+                                            <ul>
+                                                {/*
                                                     <li className="onhover-div mobile-search">
                                                         <div>
                                                             <img
                                                                 src={`${process.env.PUBLIC_URL}/assets/images/icon/search.png`}
-                                                                onClick={this.openSearch} className="img-fluid" alt=""/>
-                                                            <i className="fa fa-users" onClick={this.openSearch}/>
+                                                                onClick={openSearch} className="img-fluid" alt=""/>
+                                                            <i className="fa fa-users" onClick={openSearch}/>
                                                         </div>
                                                     </li>
                                                     <li className="onhover-div mobile-setting">
@@ -131,55 +142,58 @@ class HeaderThree extends Component {
                                                             <h6>language</h6>
                                                             <ul>
                                                                 <li><a href={null}
-                                                                       onClick={() => this.changeLanguage('en')}>English</a>
+                                                                       onClick={() => changeLanguage('en')}>English</a>
                                                                 </li>
                                                                 <li><a href={null}
-                                                                       onClick={() => this.changeLanguage('fn')}>French</a>
+                                                                       onClick={() => changeLanguage('fn')}>French</a>
                                                                 </li>
                                                             </ul>
                                                             <h6>currency</h6>
                                                             <ul className="list-inline">
                                                                 <li><a href={null}
-                                                                       onClick={() => this.props.changeCurrency('€')}>euro</a>
+                                                                       onClick={() => props.changeCurrency('€')}>euro</a>
                                                                 </li>
                                                                 <li><a href={null}
-                                                                       onClick={() => this.props.changeCurrency('₹')}>rupees</a>
+                                                                       onClick={() => props.changeCurrency('₹')}>rupees</a>
                                                                 </li>
                                                                 <li><a href={null}
-                                                                       onClick={() => this.props.changeCurrency('£')}>pound</a>
+                                                                       onClick={() => props.changeCurrency('£')}>pound</a>
                                                                 </li>
                                                                 <li><a href={null}
-                                                                       onClick={() => this.props.changeCurrency('$')}>doller</a>
+                                                                       onClick={() => props.changeCurrency('$')}>doller</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </li>
                                                     */}
-                                                    <li className={"onhover-div user-login"}>
-                                                        <Link to="/signin" >Se Connecter</Link>
-                                                        {/*<Link to="/pages/login" className="user-login-hidden fa fa-user-circle-o" />*/}
-                                                    </li>
-                                                    {/*Header Cart Component */}
-                                                    <CartContainer/>
-                                                </ul>
-                                            </div>
+                                                {
+                                                    token ? <li><Profilesection handleSignout={handleSignout} /></li> : loading ? "Loading" : (
+                                                        <li className={"onhover-div user-login"}>
+                                                            <Link to="/signin" >Se Connecter</Link>
+                                                            {/*<Link to="/pages/login" className="user-login-hidden fa fa-user-circle-o" />*/}
+                                                        </li>)
+                                                }
+                                                {/*Header Cart Component */}
+                                                <CartContainer />
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="main-nav-center">
-                                    <NavBar/>
-                                </div>
+                </div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="main-nav-center">
+                                <NavBar />
                             </div>
                         </div>
                     </div>
-                </header>
-                {/*
+                </div>
+            </header>
+            {/*
                 <div className={"container"}>
                     <div className={"row"}>
                         <div className={"col-lg-12"}>
@@ -215,11 +229,11 @@ class HeaderThree extends Component {
                         </div>
                     </div>
                 </div>
-                */}
-
+                
+                
                 <div id="search-overlay" className="search-overlay">
                     <div>
-                        <span className="closebtn" onClick={this.closeSearch} title="Close Overlay">×</span>
+                        <span className="closebtn" onClick={closeSearch} title="Close Overlay">×</span>
                         <div className="overlay-content">
                             <div className="container">
                                 <div className="row">
@@ -238,9 +252,9 @@ class HeaderThree extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-        )
-    }
+                */}
+        </div>
+    )
 }
 
-export default withTranslate(connect(null, {changeCurrency})(HeaderThree));
+export default HeaderThree;

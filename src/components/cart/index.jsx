@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 
 
-import Breadcrumb from "../common/breadcrumb";
 import {getCartTotal} from "../../services";
 import {removeFromCart, incrementQty, decrementQty} from '../../actions'
 
@@ -25,8 +24,6 @@ class cartComponent extends Component {
                     <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
                 </Helmet>
                 {/*SEO Support End */}
-
-                <Breadcrumb title={'Cart Page'}/>
 
                 {cartItems.length>0 ?
                 <section className="cart-section section-b-space">
@@ -151,7 +148,7 @@ class cartComponent extends Component {
 }
 const mapStateToProps = (state) => ({
     cartItems: state.cartList.cart,
-    symbol: state.data.symbol,
+    symbol: state.productList.symbol,
     total: getCartTotal(state.cartList.cart)
 })
 

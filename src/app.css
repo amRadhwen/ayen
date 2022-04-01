@@ -110,6 +110,24 @@ header#sticky li.user-login a {
     left: -30px;
 }
 
+/*profile section is stylesheets is here*/
+header#sticky li div.profile-section {
+    margin-left: -25px;
+}
+header#sticky li div.profile-section ul li{
+    width: 50px;
+}
+
+header#sticky li div.profile-section ul li a img{
+    width: 25px;
+}
+
+header#sticky li div.profile-section img.profile_avatar {
+    border-radius: 100%;
+    border: 1px solid black;
+    padding: 2px;
+}
+
 header#sticky li.mobile-cart {
     vertical-align: middle;
 }
@@ -500,11 +518,21 @@ div#vendor-profile div.slick-list div.slick-slide a img.img-fluid{
 }
 
 /*-------------- PRODUCTS PAGE --------------*/
-/*
+
 div#main-products-page div.collection-block{
-    height: 618px;
+    /*height: 618px;*/
+    margin-bottom: 50px;
+    box-shadow: 0 10px 8px lightgrey;
+    border-radius: 10px;
+    padding-bottom: 5px;
 }
-*/
+
+div#main-products-page div.collection-block img {
+  border-radius: 10px;
+  width: 253px;
+  height: 253px;
+}
+
 div#main-products-page div.collection-block h3 {
     text-align: left;
     font-family: inter, sans-serif;
@@ -763,8 +791,48 @@ section.login-page div.form-group {
     margin-bottom: 2rem;
 }
 
+section.login-page div.form-group div.inputloader {
+    display: inline-block;
+    vertical-align: text-top;
+    margin-left: 30px;
+}
+
+section.login-page .signinloader {
+    margin: 0 auto;
+}
+
 /*----------REGISTER PAGE------*/
 
 section.register-page form.theme-form div.form-row {
     margin-bottom: 20px;
+}
+
+section.register-page form.theme-form div.form-row select,
+section.register-page form.theme-form div.form-row select option {
+    text-transform: capitalize;
+}
+
+section.register-page .signinloader {
+    margin: 0 auto;
+}
+
+/*-------- PWD PAGE---------*/
+section.pwd-page div.invalid-feedback {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+
+/*--------------HOME PAGE----------------*/
+
+div.home-page,
+div.notification-page {
+    height: 300px;
+}
+
+div.home-page h1,
+div.notification-page h1 {
+    text-align: center;
+    margin-top: 100px;
+    color: grey;
 }
