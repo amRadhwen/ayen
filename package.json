@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://react.pixelstrap.com/",
   "basename": "/",
-  "proxy": "http://localhost:4000",
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
